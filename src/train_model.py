@@ -5,7 +5,7 @@
    "id": "c15941b3-c390-49e5-a8c0-6f766eae7afc",
    "metadata": {},
    "source": [
-    "Este script treina o modelo campeão de Random Forest Otimizado com os hiperparâmetros ajustados e serializa o artefato em models/."
+    "Este script treina o modelo campeão de <b>Random Forest Otimizado</b> com os hiperparâmetros ajustados e serializa o artefato em models/."
    ]
   },
   {
@@ -15,6 +15,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "\n",
     "import os\n",
     "import joblib\n",
     "import pandas as pd\n",
