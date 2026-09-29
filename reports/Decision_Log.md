@@ -19,14 +19,14 @@ No contexto de telecomunicações:
 
 Dado o desbalanceamento das classes (~26.5% de Churn), a **Acurácia foi descartada como métrica principal**. Definiram-se como métricas prioritárias:
 1. **Recall (Sensibilidade):** Maximizar a captura de clientes mrsco real.
-2. **$F_1$-Score:** Garantir um equilíbrio sustentável com a Precisão.
+2. **F1-Score:** Garantir um equilíbrio sustentável com a Precisão.
 3. **AUC-ROC:** Avaliar a capacidade geral de ordenação de risco do modelo.
 
 ---
 
 ## 4. Comparativo de Desempenho dos Modelos
 
-| Algoritmo | AUC-ROC | $F_1$-Score (Churn) | Recall (Churn) | Precisão (Churn) | Acurácia Geral |
+| Algoritmo | AUC-ROC | F1-Score (Churn) | Recall (Churn) | Precisão (Churn) | Acurácia Geral |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Regressão Logística (Limiar 0.44)** | **0,6274** | **0,5540** | **78,79%** | 42,72% | 55,43% |
 | **Random Forest Otimizado** | 0,6257 | 0,5397 | 72,73% | 42,91% | 56,42% |
@@ -37,8 +37,8 @@ Dado o desbalanceamento das classes (~26.5% de Churn), a **Acurácia foi descart
 ---
 
 ## 5. Estratégia de Otimização de Limiar (Threshold Adjustment)
-* **Problema:** A predição padrão em $0.50$ com pesagem de classes gerava muitos alarmes falsos.
-* **Solução:** Otimização via Curva *Precision-Recall* para encontrar o ponto d ote que maximiza a média harmônica ($F_1$-Score).
+* **Problema:** A predição padrão em 0.50 com pesagem de classes gerava muitos alarmes falsos.
+* **Solução:** Otimização via Curva *Precision-Recall* para encontrar o ponto d ote que maximiza a média harmônica (F1-Score).
 * **Resultado:** O ajuste do limiar para **0.4360** elevou o Recall da Regressão Logística de **72,12% para 78,79%** (+6,67 p.p.), com variação negligenciável na precisão (-0,55 p.p.).
 
 ---
@@ -46,5 +46,5 @@ Dado o desbalanceamento das classes (~26.5% de Churn), a **Acurácia foi descart
 ## 6. Interpretabilidade e Drives de Negócio (SHAP)
 A análise de valores SHAP (*TreeExplainer*) revelou os principais fatores determinante no comportamento dos clientes:
 1. **Tipo de Contrato:** Contratos anuais e bienais são as principais barreiras de proteção contra o cancelamento.
-2. Pagamentodo de Pagamento:** Clientes que utilizam *Cheque Eletrônico* apresentam o maior indicador de risco de *Churn*.
+2. **Método de Pagamento:** Clientes que utilizam *Boleto* apresentam o maior indicador de risco de *Churn*.
 3. **Faturamento Mensal:** Valores de cobrança elevados (*MonthlyCharges*) exercem pressão positiva direta no risco.
